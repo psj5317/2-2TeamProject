@@ -1,5 +1,5 @@
 import DataBase.LibDB;
-import mtClass.*;
+import myClass.*;
 /**
  * App 클래스의 설명을 작성하세요.
  *

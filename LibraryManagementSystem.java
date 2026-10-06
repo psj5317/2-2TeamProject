@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class LibraryManagementSystem{ 
     LibDB<Book> bookDB;  
-    HashMap<User,Book> loabDB;  
+    HashMap<User,Book> loanDB;  
     LibDB<User> userDB;   
     
     /**

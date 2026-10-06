@@ -17,7 +17,7 @@ public class User extends DB_Element
     public User(int stID, String name)
     {
         this.stID = stID;
-        this. name = name;
+        this.name = name;
     }
 
     /**
