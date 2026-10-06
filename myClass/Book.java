@@ -6,7 +6,7 @@ package myClass;
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
  */
-public class Book extends EB_Element
+public class Book extends DB_Element
 {
     private String author;
     private String bookID;
