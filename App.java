@@ -11,8 +11,8 @@ public class App
     public static void main(String[] args){
         
         LibraryManagementSystem lms = new LibraryManagementSystem();
-        LibDB<User> myUserDB = lms.setUserDB("C:\\Temp\\UserData2025.txt");
+        LibDB<User> userDB = lms.setUserDB("C:\\Temp\\UserData2025.txt");
         
-        
+        userDB.printAllElement();
     }
 }
