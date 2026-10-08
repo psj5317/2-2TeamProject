@@ -38,7 +38,7 @@ public class LibDB<T>
      * @param  y  메소드의 샘플 파라미터
      * @return    x 와 y의 합
      */
-    public T findelement(String id)
+    public T findElement(String id)
     {
         Iterator it = db.iterator();
         while(it.hasNext()){

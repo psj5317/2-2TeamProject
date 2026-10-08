@@ -4,6 +4,7 @@ import myClass.*;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * LibraryManagementSystem 클래스의 설명을 작성하세요.
@@ -23,7 +24,9 @@ public class LibraryManagementSystem{
      * @return    x 와 y의 합
      */
     public LibraryManagementSystem(){
-        
+        this.bookDB = new LibDB<Book>();
+        this.userDB = new LibDB<User>();
+        this.loanDB = new HashMap<User,Book>();
     }
 
     /**
@@ -34,7 +37,7 @@ public class LibraryManagementSystem{
      */
     public void borrowBook(String userID,String bookID) 
     {
-        
+        loanDB.put(userDB.findElement(userID),bookDB.findElement(bookID));
     } 
 
     /**
@@ -70,15 +73,12 @@ public class LibraryManagementSystem{
      */
     public LibDB<Book> setBookDB(String bookFile)
     {   
-        LibDB<User> userDB = new LibDB<User>();
-    
-        
             try{
-                FileReader fin = new FileReader(bookFile);
+                File file = new File(bookFile);
+                FileReader fin = new FileReader(file);
                 Scanner sc = new Scanner(fin);
+                
                 while(true){
-                    
-                    sc = new Scanner(fin = new FileReader(bookFile));
                     String info = sc.nextLine();;
                     StringTokenizer stz = new StringTokenizer(info,"/");
                     String bookID = stz.nextToken();
@@ -91,6 +91,7 @@ public class LibraryManagementSystem{
             
                     bookDB.addElement(book);
                 }
+                
                 
         }catch(IOException e){
                 System.out.println("파일을 읽어올 수 없습니다.");
@@ -106,11 +107,10 @@ public class LibraryManagementSystem{
      */
     public LibDB<User> setUserDB(String userFile)
     {
-        LibDB<User> userDB = new LibDB<User>();
-        Scanner sc = null;
         try{
-            FileReader fin = new FileReader(userFile);
-            sc = new Scanner(fin);
+            File file = new File(userFile);
+            FileReader fin = new FileReader(file);
+            Scanner sc = new Scanner(fin);
             
             while(true){
                 String info = sc.nextLine();
@@ -124,10 +124,6 @@ public class LibraryManagementSystem{
             }
         }catch(IOException e){
                 System.out.println("파일을 읽어올 수 없습니다.");
-        }finally{
-            if(sc != null){
-                sc.close();
-            }
         }
         return userDB;
     }
