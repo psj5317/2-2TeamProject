@@ -7,7 +7,10 @@ import java.io.File;
 import java.util.HashMap;
 
 /**
- * LibraryManagementSystem 클래스의 설명을 작성하세요.
+ * 도서 관리 시스템 객체를 생성하고, 도서를 대출하며 BookDB, UserDB에 읽어온 파일을 저장한다.
+ * 또, loanDB에 대출 정보를 저장하고, DB들을 출력하는 클래스
+ * 
+ * 
  *
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
@@ -16,12 +19,10 @@ public class LibraryManagementSystem{
     LibDB<Book> bookDB;  
     HashMap<User,Book> loanDB;  
     LibDB<User> userDB;   
-    
+
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
-     *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     *  
+     *  LibraryManagementSystem의 객체 생성자
      */
     public LibraryManagementSystem(){
         this.bookDB = new LibDB<Book>();
@@ -30,10 +31,10 @@ public class LibraryManagementSystem{
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * userID와 bookID를 이용하여 loanDB에 저장하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  userID 사용자의 ID, bookID 책의 아이디
+     * @return    없음
      */
     public void borrowBook(String userID,String bookID) 
     {
@@ -41,10 +42,10 @@ public class LibraryManagementSystem{
     } 
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     *  bookDB와 userDB를 출력하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  bookDB 또는 userDB
+     * @return    없음
      */
     public void printDB(LibDB db)
     {
@@ -52,10 +53,10 @@ public class LibraryManagementSystem{
     } 
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 대출 정보를 출력하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  없응
+     * @return    없음
      */
     public void printLoanList() 
     {
@@ -66,44 +67,45 @@ public class LibraryManagementSystem{
     } 
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 외부에 존재하는 책 파일을 bookDB에 저장하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  bookFile book정보가 있는 파일 경로
+     * @return   bookDB book정보들을 저장한 DB
      */
     public LibDB<Book> setBookDB(String bookFile)
     {   
-            try{
-                File file = new File(bookFile);
-                FileReader fin = new FileReader(file);
-                Scanner sc = new Scanner(fin);
-                
-                while(true){
-                    String info = sc.nextLine();;
-                    StringTokenizer stz = new StringTokenizer(info,"/");
-                    String bookID = stz.nextToken();
-                    String title = stz.nextToken();
-                    String author = stz.nextToken();
-                    String publisher = stz.nextToken();
-                    int year = Integer.parseInt(stz.nextToken());
-            
-                    Book book = new Book(bookID,title,author,publisher,year);
-            
-                    bookDB.addElement(book);
-                }
-                
-                
+        try{
+            File file = new File(bookFile);
+            FileReader fin = new FileReader(file);
+            Scanner sc = new Scanner(fin);
+
+            while(sc.hasNextLine()){
+                String info = sc.nextLine();;
+                StringTokenizer stz = new StringTokenizer(info,"/");
+                String bookID = stz.nextToken();
+                String title = stz.nextToken();
+                String author = stz.nextToken();
+                String publisher = stz.nextToken();
+                int year = Integer.parseInt(stz.nextToken());
+
+                Book book = new Book(bookID,title,author,publisher,year);
+
+                bookDB.addElement(book);
+            }
+            fin.close();
+            sc.close();
+
         }catch(IOException e){
-                System.out.println("파일을 읽어올 수 없습니다.");
+            System.out.println("파일을 읽어올 수 없습니다.");
         }
         return bookDB;
     } 
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * 외부에 존재하는 사용자 파일을 userDB에 저장하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  userFile user정보가 있는 파일 경로
+     * @return    userDB user 정보들을 저장한 DB
      */
     public LibDB<User> setUserDB(String userFile)
     {
@@ -111,22 +113,23 @@ public class LibraryManagementSystem{
             File file = new File(userFile);
             FileReader fin = new FileReader(file);
             Scanner sc = new Scanner(fin);
-            
-            while(true){
+
+            while(sc.hasNextLine()){
                 String info = sc.nextLine();
                 StringTokenizer stz = new StringTokenizer(info,"/");
-                    
+
                 int stID = Integer.parseInt(stz.nextToken());
                 String name = stz.nextToken();
                 User user = new User(stID, name);
-                
+
                 userDB.addElement(user);
             }
+            fin.close();
+            sc.close();
         }catch(IOException e){
-                System.out.println("파일을 읽어올 수 없습니다.");
+            System.out.println("파일을 읽어올 수 없습니다.");
         }
         return userDB;
     }
 }
-
 

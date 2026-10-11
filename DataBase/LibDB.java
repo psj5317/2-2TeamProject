@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * LibDB 클래스의 설명을 작성하세요.
+ * Book객체와 User객체를 저장할 수 있는 제네릭 클래스
  *
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
@@ -22,10 +22,10 @@ public class LibDB<T>
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * 컬렉션에 객체를 추가하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param  item Book이나 User객체
+     * @return    없음
      */
     public void addElement(T item)
     {
@@ -33,10 +33,10 @@ public class LibDB<T>
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * id를 넣었을때 책 ID면 책 객체를 찾고, 사용자 ID면 사용자 객체를 반환하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  id 책 또는 사용자의 id
+     * @return    찾는 아이디가 있다면 아이디와 일치하는 객체 반환, 없다면 null
      */
     public T findElement(String id)
     {
@@ -49,7 +49,12 @@ public class LibDB<T>
         }
         return null;
     }
-    
+    /**
+     *  현재 들어가있는 객체를 모두 출력하는 메소드
+     *  
+     *  @param  없음
+     *  @return     없음
+     */
     public void printAllElement(){
         for(T item:db){
             System.out.println(item);
