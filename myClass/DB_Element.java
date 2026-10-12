@@ -1,11 +1,10 @@
 package myClass;
 
-
 /**
  * Book클래스와 User클래스를 서브클래스로 하는 추상 클래스
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (2023320029 정지후, 2023320010 박성준, 2023320012 강성하)
+ * @version (2026/10/12)
  */
 public abstract class DB_Element
 {

@@ -3,8 +3,8 @@ package myClass;
 /**
  * 책 객체에 대한 클래스
  *
- * @author (작성자 이름)
- * @version (버전 번호 또는 작성한 날짜)
+ * @author (2023320029 정지후, 2023320010 박성준, 2023320012 강성하)
+ * @version (2026/10/12)
  */
 public class Book extends DB_Element
 {
