@@ -1,7 +1,7 @@
 package myClass;
 
 /**
- * User 클래스의 설명을 작성하세요.
+ * 사용자 객체에 대한 클래스
  *
  * @author (작성자 이름)
  * @version (버전 번호 또는 작성한 날짜)
@@ -21,10 +21,10 @@ public class User extends DB_Element
     }
 
     /**
-     * 예제 메소드 - 이 주석을 사용자에 맞게 바꾸십시오
+     * 사용자의 ID를 반환하는 메소드
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 더하기 y의 결과값을 반환
+     * @param  없음
+     * @return    ID를 문자열로 반환
      */
     public String getID()
     {
@@ -32,10 +32,10 @@ public class User extends DB_Element
     }
 
     /**
-     * 메소드 예제 - 사용자에 맞게 주석을 바꾸십시오.
+     * toString메소드 오버라이딩
      *
-     * @param  y  메소드의 샘플 파라미터
-     * @return    x 와 y의 합
+     * @param  없음
+     * @return    출력 형식에 맞게 오버라이딩
      */
     public String toString()
     {
