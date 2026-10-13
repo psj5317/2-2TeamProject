@@ -7,7 +7,7 @@ import java.util.Iterator;
  * Book객체와 User객체를 저장할 수 있는 제네릭 클래스
  *
  * @author (2023320029 정지후, 2023320010 박성준, 2023320012 강성하)
- * @version (2026/10/12)
+ * @version (2026/09/30)
  */
 public class LibDB<T>
 {
