@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class LibDB<T>
 {
-    ArrayList<T> db;
+    private ArrayList<T> db;
 
     /**
      * LibDB 클래스의 객체 생성자
